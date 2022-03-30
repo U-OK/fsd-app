@@ -1,11 +1,13 @@
-import { lazy } from "react";
+import React from "react";
 import { Navigate, Route, Routes } from "react-router";
 
-const TestPage = lazy(() => import('./test'));
+const TasksListPage = React.lazy(() => import("./tasksList"));
+const TaskDetailsPage = React.lazy(() => import("./taskDetails"));
+
 
 export const Routing = () => (
     <Routes>
-        <Route path='/' element={TestPage} />
-        <Navigate to='/' />
+        <Route path="/" element={<TasksListPage />} />
+        <Route path="/:taskId" element={<TaskDetailsPage />} />
     </Routes>
 )
